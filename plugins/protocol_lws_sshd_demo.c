@@ -160,7 +160,7 @@ ssh_ops_tx(void *_priv, int stdch, uint8_t *buf, size_t len)
 	if (stdch != LWS_STDOUT)
 		return 0;
 
-	if (priv->len - priv->pos < chunk)
+	if ((size_t)(priv->len - priv->pos) < chunk)
 		chunk = priv->len - priv->pos;
 
 	if (!chunk)
